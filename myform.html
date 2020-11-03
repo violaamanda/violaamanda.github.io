@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>05211942000006 - CUT VIOLA AMANDA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .label {
+            float: left;
+            width: 120px;
+        }
+
+        .infobox {
+            width: 200px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 10px;
+        }
+
+        .submit {
+            margin-left: 125px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container>
+        <form id=" signup" method="post" action="">
+        <div><span class="label">Enter Date of Birth </span><input type="text" class="infobox" name="dob" /><span
+                class="error"> Invalid Date. Correct format is mm/dd/yyyy or mm-dd-yyyy
+            </span></div>
+        <script>
+            $(document).ready(function () { //the function available after the document is loaded or ready
+                $('.error').hide(); //label with class name error will be hiden
+                $('.submit').click(function (event) { //class name submit can be clicked or an click event occurs when submit button is clicked
+                    var data = $('.infobox').val(); //return the value of text box with class name infobox
+                    if (validate_date(data)) { //function test the contents of the date parameter if match the regular expression it will returns as true, if not it will returns as false
+                        $('.error').hide(); //label with class name error will be hiden when if returns as true
+                    }
+                    else { //condition else will proceeds if 'if' is returns as false
+                        $('.error').show(); //label with class name error will be shown when else is executed
+                        event.preventDefault();//cancels the class name error if it is cancelable, the default action that belongs to the event will not occur.
+                    }
+                });
+            });
+            function validate_date(date) { //function test the contents of the date parameter if match the regular expression it will returns as true, if not it will returns as false 
+                var pattern = new RegExp(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/); //the regular expression set as the pattern that must match exactly
+                return pattern.test(date); //execute pattern tests for a match in a string, it will returns as true or false
+            } 
+        </script>
+        <input class="submit" type="submit" value="Submit">
+        </form>
+</body>
+</html>
